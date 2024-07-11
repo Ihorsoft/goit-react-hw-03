@@ -1,0 +1,108 @@
+body {
+  display: flex;
+  height: 100vh;
+  background-color: #333;
+  /* color: #fff;*/
+}
+.button {
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 4px;
+  overflow: hidden;
+  font-size: 24px;
+  color: #2196f3;
+  padding: 15px 30px;
+  transition: 0.2s;
+  /*border-radius: 8px;*/
+}
+
+.button:hover {
+  transition: 1s;
+  transition-delay: 0.3s;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3;
+  background-color: #2196f3;
+  color: #333;
+}
+
+.buttonline {
+  position: absolute;
+  display: block;
+}
+
+.buttonlineleft {
+}
+
+.buttonlineright {
+}
+.buttonlineleft {
+}
+.buttonlinetop {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  /*background-color: #fff;*/
+  background: linear-gradient(90deg, transparent, #2196f3);
+}
+.buttonlinebottom {
+  position: absolute;
+  display: block;
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  /*background-color: #fff;*/
+  background: linear-gradient(270deg, transparent, #2196f3);
+}
+
+.button:hover .buttonlinebottom {
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.2s;
+}
+
+.button:hover .buttonlinetop {
+  left: 100%;
+  transition: 1s;
+  transition-delay: 0.2s;
+}
+
+/*   for left */
+.buttonlineleft {
+  position: absolute;
+  display: block;
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  /*background-color: #fff;*/
+  background: linear-gradient(0deg, transparent, #2196f3);
+}
+
+.button:hover .buttonlineleft {
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0s;
+}
+
+/* for right*/
+.buttonlineright {
+  position: absolute;
+  display: block;
+  bottom: 100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  /*background-color: #fff;*/
+  background: linear-gradient(180deg, transparent, #2196f3);
+}
+
+.button:hover .buttonlineright {
+  bottom: -100%;
+  transition: 1s;
+  transition-delay: 0s;
+}

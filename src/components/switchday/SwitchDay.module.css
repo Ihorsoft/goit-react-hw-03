@@ -1,0 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border: 0;
+  outline: 0;
+}
+
+html {
+  overflow-x: hidden;
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  min-height: 100dvh;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.switch {
+  display: inline-block;
+  position: relative;
+  width: 6.5rem;
+  height: 3.2rem;
+}
+
+.switch input {
+  /* higgen element check*/
+  opacity: 1;
+  width: 0;
+  height: 0;
+}
+
+.move {
+  /* create switch*/
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #73c0fc;
+  border-radius: 3rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.move::before {
+  /* start look of switch*/
+  position: absolute;
+  content: "";
+  background-color: #fff;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 3rem;
+  top: 0;
+  bottom: 0;
+  left: 0.12rem;
+  box-shadow: 0 0.2rem 0.5rem #000;
+  transform: 0.3s;
+  z-index: 2;
+}
+
+input:checked + .move {
+  /* on click change back color*/
+  background-color: #183153;
+}
+
+input:checked + .move::before {
+  transform: translateX(3.1rem);
+}
+
+.input-box {
+  max-width: 20rem;
+  height: 4rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #222;
+  border: 0.2rem solid #fff;
+}
