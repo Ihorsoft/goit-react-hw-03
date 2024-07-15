@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useId } from "react";
 
-import "./App.css";
+import css from "./App.module.css";
 import Description from "../description/Description";
 import Feedback from "../feedback/Feedback.jsx";
 import Options from "../options/Options";
@@ -11,97 +11,62 @@ import LoginForm from "../loginform/LoginForm.jsx";
 import InputEffect from "../inputeffect/InputEffect.jsx";
 import SuperButton from "../superbutton/SuperButton.jsx";
 import FeedbackForm from "../FeedbackForm/FeedbackForm.jsx";
+import ContactForm from "../contactform/ContactForm.jsx";
+import Contact from "../contact/Contact.jsx";
+import SearchBox from "../searchbox/SeachBox.jsx";
+import ContactList from "../contactlist/ContactList.jsx";
 
 function App() {
-  const handleLogin = (userData) => {
-    console.log("userData for hendleLOgin into APP", userData);
-  };
+  const firstContacts = [
+    { username: "John", telnumber: 8888888, id: 1 },
+    { username: "Bill", telnumber: 1111111, id: 2 },
+  ];
 
-  const updateFeedback = (feedbackType) => {
-    switch (feedbackType) {
-      case "good":
-        setFeedbackObj((feedbackObj) => ({
-          ...feedbackObj,
-          good: feedbackObj.good + 1,
-        }));
-
-        break;
-
-      case "neutral":
-        setFeedbackObj({
-          ...feedbackObj,
-          neutral: feedbackObj.neutral + 1,
-        });
-        break;
-
-      case "bad":
-        setFeedbackObj({
-          ...feedbackObj,
-          bad: feedbackObj.bad + 1,
-        });
-        break;
-
-      case "reset":
-        setFeedbackObj({
-          ...feedbackObj,
-          good: 0,
-          neutral: 0,
-          bad: 0,
-        });
-        break;
-    }
-  };
-
-  const fObj = {
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  };
-
-  const [feedbackObj, setFeedbackObj] = useState(() => {
-    const saveData = JSON.parse(localStorage.getItem("feedback"));
-    if (saveData) {
-      return saveData;
+  const [contacts, setContacts] = useState(() => {
+    const saveContacts = JSON.parse(localStorage.getItem("contacts"));
+    if (saveContacts) {
+      return saveContacts;
     } else {
-      return fObj;
+      return firstContacts;
     }
   });
 
-  useEffect(() => {
-    localStorage.setItem("feedback", JSON.stringify(feedbackObj));
-  }, [feedbackObj]);
+  const [filter, setFilter] = useState("");
 
-  let totalFeedback = feedbackObj.good + feedbackObj.neutral + feedbackObj.bad;
-  let positiveFeedback = 0;
-  if (totalFeedback !== 0) {
-    positiveFeedback = Math.round((feedbackObj.good / totalFeedback) * 100);
-  } else {
-    positiveFeedback = 0;
-  }
+  const visibleContacts = contacts.filter((cont) =>
+    cont.username.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  //додавання контакт
+  const AddContact = (newValues) => {
+    // const idnewadd = useId();
+    console.log("in App new add contact:", newValues);
+
+    return setContacts((prevContacts) => [...prevContacts, newValues]);
+  };
+
+  const DeleteContact = (contactId) => {
+    console.log(contactId);
+    return setContacts((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
+    });
+  };
+
+  // збереження даних в сховищі
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+  }, [contacts]);
+
+  //localStorage.clear();
+
+  // рендеринг Арр
 
   return (
     <>
-      <SuperButton />
-      <InputEffect />
-      <SwitchDay />
-      <LoginForm onLogin={handleLogin} />
-      <FeedbackForm />
-
-      {/*  <Description />
-      <Options
-        feedbackObj={feedbackObj}
-        totalFeedback={totalFeedback}
-        updateFeedback={updateFeedback}
-      />
-      {totalFeedback === 0 ? (
-        <Notification />
-      ) : (
-        <Feedback
-          feedbackObj={feedbackObj}
-          totalFeedback={totalFeedback}
-          positiveFeedback={positiveFeedback}
-        />
-      )} */}
+      <h1 className={css.titleapp}>Phonebook</h1>
+      <ContactForm onAdd={AddContact} />
+      <SearchBox value={filter} onFilter={setFilter} onDel={DeleteContact} />
+      <ContactList contacts={visibleContacts} onDel={DeleteContact} />
     </>
   );
 }

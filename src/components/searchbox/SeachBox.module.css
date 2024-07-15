@@ -1,0 +1,9 @@
+.label {
+  color: black;
+  background-color: #f9f9f9;
+  margin-bottom: 4px;
+}
+.filter {
+  border: 1px solid black;
+  margin-bottom: 12px;
+}

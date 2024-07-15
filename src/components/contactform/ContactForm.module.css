@@ -1,0 +1,25 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 8px;
+  background-color: beige;
+  margin-bottom: 8px;
+  max-width: 240px;
+}
+
+.field {
+  border: 1px solid black;
+  border-radius: 2px;
+  margin-bottom: 4px;
+}
+
+.btn {
+  width: 140px;
+  border: 1px solid black;
+  justify-content: center;
+}
+.error {
+  color: red;
+}

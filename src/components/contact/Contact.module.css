@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  padding: 12px;
+  background-color: aliceblue;
+  color: black;
+  border: 2px solid black;
+  border-radius: 4px;
+  justify-content: space-between;
+}
+
+.text {
+}
+
+.btn {
+  background-color: burlywood;
+}
