@@ -7,8 +7,8 @@ import css from "./ContactForm.module.css";
 
 const ContactSchema = Yup.object().shape({
   username: Yup.string()
-    .min(4, "Too Short!")
-    .max(11, "Too Long!")
+    .min(3, "Too Short!")
+    .max(16, "Too Long!")
     .required("Required"),
 
   telnumber: Yup.string()
