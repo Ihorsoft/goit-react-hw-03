@@ -8,12 +8,12 @@ import css from "./ContactForm.module.css";
 const ContactSchema = Yup.object().shape({
   username: Yup.string()
     .min(4, "Too Short!")
-    .max(50, "Too Long!")
+    .max(11, "Too Long!")
     .required("Required"),
 
   telnumber: Yup.string()
     .min(8, "Too short")
-    .max(14, "Too long")
+    .max(10, "Too long")
     .required("Required"),
 });
 
@@ -27,13 +27,7 @@ const ContactForm = ({ onAdd }) => {
     newValues.id = Date.now();
     // newValues.id = useId();
     console.log("ContactForm, newvalue + id:", newValues);
-    onAdd(
-      newValues
-      // помилка newValues без {}
-      /*  id: useId(),
-      username: e.target.elements.username.value,
-      telnumber: e.target.elements.telnumber.value, */
-    );
+    onAdd(newValues);
     actions.resetForm();
   };
   const initialValues = {

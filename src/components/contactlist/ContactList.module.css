@@ -4,10 +4,10 @@
   min-width: 700px;
   flex-wrap: wrap;
   gap: 16px;
+  padding-left: 4px;
 }
 .item {
-  /* display: flex;*/
   max-width: 240px;
-  flex: 20em;
+  /*  flex: 20em;*/
   justify-content: space-between;
 }

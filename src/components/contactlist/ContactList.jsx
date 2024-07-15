@@ -5,7 +5,7 @@ const ContactList = ({ contacts, onDel }) => {
   return (
     <ul className={css.list}>
       {contacts.map((item) => (
-        <li className={css.item} key={item.id}>
+        <li key={item.id}>
           <Contact data={item} onDel={onDel} />
         </li>
       ))}

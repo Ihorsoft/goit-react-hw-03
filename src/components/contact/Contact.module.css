@@ -6,6 +6,7 @@
   border: 2px solid black;
   border-radius: 4px;
   justify-content: space-between;
+  width: 260px;
 }
 
 .text {
